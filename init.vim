@@ -107,7 +107,7 @@ colorscheme  gruvbox
  " }}}
 
 " ------------------- MAPPING --------------------------------------------
-nnoremap ,<space> :nohlsearch<CR>					" top highline search
+nnoremap ,<space> :nohlsearch<CR>					" stop highline search
 
 
 " Specify a directory for plugins
