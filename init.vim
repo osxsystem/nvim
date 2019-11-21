@@ -185,3 +185,8 @@ nnoremap <leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 " move lines up and down in visual mode
 xnoremap <c-k> :move '<-2<CR>gv=gv
 xnoremap <c-j> :move '>+1<CR>gv=gv
+" Load all plugins ------------------------------- {{{
+if filereadable(expand('~/.config/nvim/vimrc.bundles'))
+  source ~/.config/nvim/vimrc.bundles
+endif
+" }}}
