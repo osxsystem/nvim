@@ -2,7 +2,10 @@
 " -------------------------------------------------------------------------
 
 " Call the theme one
-colorscheme  gruvbox
+" colorscheme  gruvbox
+"
+set background=dark
+colorscheme PaperColor
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
  set nocompatible           " vim, not vi
@@ -13,11 +16,7 @@ colorscheme  gruvbox
  "  Behavior Modification ----------------------  {{{
 
    " set leader key
-     let g:mapleader=","
-
-   " alias for leader key
-     "nmap <space> \
-     "xmap <space> \
+   let g:mapleader=","
 
    set backspace=2       " Backspace deletes like most programs in insert mode
    set history=200       " how many : commands to save in history

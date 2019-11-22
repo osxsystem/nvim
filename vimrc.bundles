@@ -8,7 +8,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   augroup END
 endif
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.config/nvim/plugged')
+Plug 'NLKNguyen/papercolor-theme'
 
 " List Plugins =====================================
 
@@ -511,7 +512,7 @@ Plug 'enricobacis/vim-airline-clock'
   "' File icons in vim --- keep at the bottom, below airline, nerdtree and startify
   Plug 'ryanoasis/vim-devicons'
 "}}}
-
+  Plug 'jsfaint/gen_tags.vim'
 " OWN PLUGINS: {{{
   " automatic bulleted lists
   Plug 'dkarter/bullets.vim'
@@ -519,6 +520,7 @@ Plug 'enricobacis/vim-airline-clock'
   " snip helpers - assorted functions for snippets
   Plug 'dkarter/sniphelpers.vim'
 
+  Plug 'ctrlpvim/ctrlp.vim'
   " routes for rails, phoenix etc
   " Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
 " }}}
