@@ -3,7 +3,7 @@
 
 " Call the theme one
 " colorscheme  gruvbox
-"
+
 set background=dark
 colorscheme PaperColor
 " General settings {{{
@@ -11,13 +11,11 @@ colorscheme PaperColor
  set nocompatible           " vim, not vi
  syntax on                  " syntax highlighting
  filetype plugin indent on  " try to recognize filetypes and load rel' plugins
-" }}}
 
+ " }}}
  "  Behavior Modification ----------------------  {{{
-
    " set leader key
    let g:mapleader=","
-
    set backspace=2       " Backspace deletes like most programs in insert mode
    set history=200       " how many : commands to save in history
    set ruler             " show the cursor position all the time
@@ -38,7 +36,7 @@ colorscheme PaperColor
    set shiftwidth=4      " Number of spaces to use for each step of (auto)indent.
    set expandtab         " insert tab with right amount of spacing
    set shiftround        " Round indent to multiple of 'shiftwidth'
-   set termguicolors     " enable true colors
+   " set termguicolors     " enable true colors
    set hidden            " enable hidden unsaved buffers
 
    if !has('nvim')             " does not work on neovim
@@ -104,47 +102,14 @@ colorscheme PaperColor
    " enable folding in bash files
      let g:sh_fold_enabled=1
  " }}}
+" Ignore popular folder and file system
+let g:ctrlp_custom_ignore ='node_modules\DS_Store\|git'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:31,results:31'
 
 " ------------------- MAPPING --------------------------------------------
 nnoremap ,<space> :nohlsearch<CR>					" stop highline search
-
-
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.config/nvim/plugged')
-
-Plug 'morhetz/gruvbox'
-
-Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Initialize plugin system
-call plug#end()
 
 " VimPlug:
 nnoremap <leader>pi :PlugInstall<CR>
@@ -156,6 +121,9 @@ nnoremap <leader>wo <c-w>o
 
 " Switch between the last two files
 nnoremap <tab><tab> <c-^>
+" ---------------------- COPY TO CLIPBOARD -----------------------
+" :w !pbcopy work when copy from the other window
+vmap <C-c> :w !pbcopy<CR>               " i dont known maybe use: "*y instead, or "+y
 
 " copy to end of line
 nnoremap Y y$
@@ -171,11 +139,19 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+" --------------- Search ----------------------------------
+set hlsearch
 
 " Incsearch:
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" --------------- End Search ------------------------------
+" toggle NERDTree
+nmap <C-b> :NERDTreeToggle<cr>
+" NERDTree reload or refresh
+nmap <Leader>r :NERDTreeRefreshRoot<CR>
 
 " Open files relative to current path:
 nnoremap <leader>ed :edit <C-R>=expand("%:p:h") . "/" <CR>
