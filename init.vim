@@ -6,11 +6,17 @@
 
 set background=dark
 colorscheme PaperColor
+set encoding=utf-8
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
  set nocompatible           " vim, not vi
  syntax on                  " syntax highlighting
  filetype plugin indent on  " try to recognize filetypes and load rel' plugins
+ set guicursor=
+ set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+ let g:python_host_prog='/Users/hung/.pyenv/shims/python'
+ let g:loaded_python_provider = 0
+ let g:deoplete#enable_at_startup = 1
 
  " }}}
  "  Behavior Modification ----------------------  {{{
@@ -76,7 +82,14 @@ colorscheme PaperColor
 
    " Set spellfile to location that is guaranteed to exist, can be symlinked to
    " Dropbox or kept in Git
-     set spellfile=$HOME/.vim-spell-en.utf-8.add
+"     set spellfile=$HOME/.vim-spell-en.utf-8.add
+    
+    " NCM2
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+
+    " IMPORTANT: :help Ncm2PopupOpen for more information
+    set completeopt=noinsert,menuone,noselect
 
    " Autocomplete with dictionary words when spell check is on
      set complete+=kspell
@@ -107,6 +120,40 @@ let g:ctrlp_custom_ignore ='node_modules\DS_Store\|git'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:31,results:31'
+"++++++++++++++++++++ support python highlight syntax
+hi semshiLocal           ctermfg=209 guifg=#ff875f
+hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+hi semshiParameter       ctermfg=75  guifg=#5fafff
+hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+hi semshiFree            ctermfg=218 guifg=#ffafd7
+hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
+
+hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+sign define semshiError text=E> texthl=semshiErrorSign
+" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+" default semshi mapping
+nmap <silent> <leader>rr :Semshi rename<CR>
+
+nmap <silent> <Tab> :Semshi goto name next<CR>
+nmap <silent> <S-Tab> :Semshi goto name prev<CR>
+
+nmap <silent> <leader>c :Semshi goto class next<CR>
+nmap <silent> <leader>C :Semshi goto class prev<CR>
+
+nmap <silent> <leader>f :Semshi goto function next<CR>
+nmap <silent> <leader>F :Semshi goto function prev<CR>
+
+nmap <silent> <leader>gu :Semshi goto unresolved first<CR>
+nmap <silent> <leader>gp :Semshi goto parameterUnused first<CR>
+
+nmap <silent> <leader>ee :Semshi error<CR>
+nmap <silent> <leader>ge :Semshi goto error<CR>
 
 " ------------------- MAPPING --------------------------------------------
 nnoremap ,<space> :nohlsearch<CR>					" stop highline search

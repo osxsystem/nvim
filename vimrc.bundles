@@ -76,7 +76,8 @@ endif
           \ 'coc-yaml',
           \ 'coc-yank',
           \ ]
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+"    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endif
 " }}}
 
@@ -85,7 +86,17 @@ endif
   " For func argument completion
   Plug 'Shougo/neosnippet'
   Plug 'Shougo/neosnippet-snippets'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" }}}
 
+" Semshi provides semantic highlighting for Python in Neovim: {{{
+    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 " }}}
 
 " Neovim: {{{
@@ -535,6 +546,14 @@ Plug 'enricobacis/vim-airline-clock'
   Plug 'ctrlpvim/ctrlp.vim'
   " routes for rails, phoenix etc
   " Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
+  " Python deoplete-jedi
+  Plug 'deoplete-plugins/deoplete-jedi'
+  Plug 'ncm2/ncm2'
+  Plug 'roxma/nvim-yarp'
+  Plug 'ncm2/ncm2-bufword'
+  Plug 'ncm2/ncm2-path'
+  Plug 'davidhalter/jedi-vim'
+
 " }}}
 
 " ==================================================
