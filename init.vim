@@ -207,6 +207,16 @@ nnoremap <leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 " move lines up and down in visual mode
 xnoremap <c-k> :move '<-2<CR>gv=gv
 xnoremap <c-j> :move '>+1<CR>gv=gv
+
+" Languague Client config
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/Users/hung/.pyenv/shims/pyls'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" ====================================================================
 " Load all plugins ------------------------------- {{{
 if filereadable(expand('~/.config/nvim/vimrc.bundles'))
   source ~/.config/nvim/vimrc.bundles
