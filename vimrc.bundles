@@ -516,9 +516,6 @@ Plug 'enricobacis/vim-airline-clock'
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-
-  " (Optional) Multi-entry selection UI.
-  Plug 'junegunn/fzf'
 " ==================================================
 
 if filereadable(expand('~/.vimrc.bundles.local'))
