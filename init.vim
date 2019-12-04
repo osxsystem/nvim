@@ -83,7 +83,6 @@ set encoding=utf-8
    " Set spellfile to location that is guaranteed to exist, can be symlinked to
    " Dropbox or kept in Git
 "     set spellfile=$HOME/.vim-spell-en.utf-8.add
-    
     " NCM2
     " enable ncm2 for all buffers
     autocmd BufEnter * call ncm2#enable_for_buffer()

@@ -138,27 +138,6 @@ endif
 
 " }}}
 
-" Gleam: {{{
-  " Gleam language support
-  Plug 'gleam-lang/gleam.vim'
-" }}}
-
-" Erlang: {{{
-  " syntax
-  Plug 'vim-erlang/vim-erlang-runtime'
-" }}}
-
-" Elixir: {{{
-  " Elixir support
-  Plug 'elixir-lang/vim-elixir'
-
-  " pulls info on hex packages (requires mattn/webapi-vim)
-  Plug 'lucidstack/hex.vim', { 'for': 'elixir'}
-
-  " shortcuts for the Phoenix framework
-  Plug 'c-brenn/phoenix.vim'
-" }}}
-
 " GraphQL {{{
   Plug 'jparise/vim-graphql'
 " }}}
@@ -224,11 +203,6 @@ endif
 
   " add text object for HTML attributes - allows dax cix etc
   Plug 'whatyouhide/vim-textobj-xmlattr'
-" }}}
-
-" WebAssembly: {{{
-  " Syntax Highlighting:
-  Plug 'rhysd/vim-wasm', { 'for': 'wasm' }
 " }}}
 
 " Searching: {{{
@@ -368,11 +342,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
   Plug 'pearofducks/ansible-vim'
 " }}}
 
-" Caddy: {{{
-  " syntax highlighting for caddyfile
-  Plug 'isobit/vim-caddyfile', { 'for': 'Caddyfile' }
-" }}}
-
 " GITHUB: {{{
   " Browse github
   Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
@@ -390,14 +359,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
-" }}}
-
-" Crystal: {{{
-  Plug 'rhysd/vim-crystal'
-" }}}
-
-" Haskell: {{{
-  Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 " }}}
 
 " Swift: {{{
