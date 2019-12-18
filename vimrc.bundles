@@ -15,15 +15,14 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'junegunn/vim-easy-align'
-
+Plug 'rstacruz/vim-closer'
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Using a non-master branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+"Auto Pair
+Plug 'jiangmiao/auto-pairs'
 
 " Legacy Vim {{{
 
@@ -45,54 +44,6 @@ endif
   " fzf greatness (fuzzy finding)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
-" }}}
-
-" COC {{{
-  if executable('yarn') && executable('node')
-    let g:coc_global_extensions = [
-          \ 'coc-css',
-          \ 'coc-dictionary',
-          \ 'coc-elixir',
-          \ 'coc-eslint',
-          \ 'coc-git',
-          \ 'coc-github',
-          \ 'coc-gitignore',
-          \ 'coc-gocode',
-          \ 'coc-highlight',
-          \ 'coc-html',
-          \ 'coc-json',
-          \ 'coc-neosnippet',
-          \ 'coc-omni',
-          \ 'coc-prettier',
-          \ 'coc-rls',
-          \ 'coc-snippets',
-          \ 'coc-solargraph',
-          \ 'coc-svg',
-          \ 'coc-syntax',
-          \ 'coc-tslint-plugin',
-          \ 'coc-tsserver',
-          \ 'coc-ultisnips',
-          \ 'coc-vimlsp',
-          \ 'coc-yaml',
-          \ 'coc-yank',
-          \ ]
-"    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  endif
-" }}}
-
-" Deoplete: {{{
-  Plug 'racer-rust/vim-racer'
-  " For func argument completion
-  Plug 'Shougo/neosnippet'
-  Plug 'Shougo/neosnippet-snippets'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
 " }}}
 
 " Semshi provides semantic highlighting for Python in Neovim: {{{
@@ -138,25 +89,12 @@ endif
 
 " }}}
 
-" GraphQL {{{
-  Plug 'jparise/vim-graphql'
-" }}}
-
 " TimPope: {{{
   " Vim sugar for the UNIX shell commands that need it the most.
   Plug 'tpope/vim-eunuch'
 
   " allow (non-native) plugins to use the . command
   Plug 'tpope/vim-repeat'
-
-  " Surround text with closures
-  Plug 'tpope/vim-surround'
-
-  " vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
-  Plug 'tpope/vim-projectionist'
-
-  " vim unimpaired fixes daily annoyences
-  Plug 'tpope/vim-unimpaired'
 
   " abolish.vim: easily search for, substitute, and abbreviate multiple variants
   " of a word
@@ -238,15 +176,15 @@ endif
   Plug 'benmills/vimux', { 'on': 'Mux' }
     " Run Golang tests in vimux
     Plug 'benmills/vimux-golang', { 'on': 'Mux' }
-
-    " Run elixir mix tests in vimux
-    Plug 'spiegela/vimix', { 'on': 'Mux' }
-
-    " Run ruby and elixir tests
-    Plug 'jgdavey/vim-turbux', { 'on': 'Mux' }
-
-  " autocomplete using text from tmux
-  Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
+"
+"    " Run elixir mix tests in vimux
+"    Plug 'spiegela/vimix', { 'on': 'Mux' }
+"
+"    " Run ruby and elixir tests
+"    Plug 'jgdavey/vim-turbux', { 'on': 'Mux' }
+"
+"  " autocomplete using text from tmux
+"  Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
 " }}}
 
 " Snippets: {{{
@@ -382,11 +320,6 @@ Plug 'enricobacis/vim-airline-clock'
   Plug 'tpope/vim-scriptease'
 "}}}
 
-" Format+Lint: {{{
-  " staticly check code and highlight errors (async syntastic replacement)
-  Plug 'w0rp/ale'
-" }}}
-
 " Quickfix List: {{{
   Plug 'romainl/vim-qf'
 " }}}
@@ -463,20 +396,24 @@ Plug 'enricobacis/vim-airline-clock'
   Plug 'dkarter/sniphelpers.vim'
 
   Plug 'ctrlpvim/ctrlp.vim'
-  " routes for rails, phoenix etc
-  " Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
-  " Python deoplete-jedi
-  Plug 'deoplete-plugins/deoplete-jedi'
-  Plug 'ncm2/ncm2'
-  Plug 'roxma/nvim-yarp'
-  Plug 'ncm2/ncm2-bufword'
-  Plug 'ncm2/ncm2-path'
-  Plug 'davidhalter/jedi-vim'
 " }}}
+" {{{ lsp
   Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+" assuming you're using vim-plug: https://github.com/junegunn/vim-plug
+     Plug 'ncm2/ncm2'
+     Plug 'roxma/nvim-yarp'
+"     Plug 'prabirshrestha/async.vim'
+"     Plug 'prabirshrestha/vim-lsp'
+"     Plug 'ncm2/ncm2-vim-lsp'
+"     " After vim-lsp, etc
+"     Plug 'ryanolsonx/vim-lsp-python'
+     Plug 'ncm2/ncm2-bufword'
+     Plug 'ncm2/ncm2-path'
+
+" }}}
 " ==================================================
 
 if filereadable(expand('~/.vimrc.bundles.local'))

@@ -1,6 +1,8 @@
 " -------------------------- Config UI ------------------------------------
 " -------------------------------------------------------------------------
 
+
+
 " Call the theme one
 " colorscheme  gruvbox
 
@@ -14,9 +16,9 @@ set encoding=utf-8
  filetype plugin indent on  " try to recognize filetypes and load rel' plugins
  set guicursor=
  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
- let g:python_host_prog='/Users/hung/.pyenv/shims/python'
- let g:loaded_python_provider = 0
- let g:deoplete#enable_at_startup = 1
+" let g:python_host_prog='/Users/hung/.pyenv/shims/python'
+" let g:loaded_python_provider = 0
+" let g:deoplete#enable_at_startup = 1
 
  " }}}
  "  Behavior Modification ----------------------  {{{
@@ -44,7 +46,7 @@ set encoding=utf-8
    set shiftround        " Round indent to multiple of 'shiftwidth'
    " set termguicolors     " enable true colors
    set hidden            " enable hidden unsaved buffers
-
+   set autoread          " make Vim automatically refresh any files that haven't been edited by Vim
    if !has('nvim')             " does not work on neovim
      set emoji                 " treat emojis 😄  as full width characters
      set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
@@ -180,6 +182,8 @@ noremap gy "+y
 " copy whole file to system clipboard
 nnoremap gY gg"+yG
 
+" macOS clipboard connected Vi
+set clipboard=unnamed
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -187,6 +191,13 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 " --------------- Search ----------------------------------
 set hlsearch
+
+" read/write file when moving buffer
+set autowrite
+set autoread
+
+set undofile
+set undodir=/tmp
 
 " Incsearch:
 map /  <Plug>(incsearch-forward)
@@ -208,8 +219,26 @@ xnoremap <c-k> :move '<-2<CR>gv=gv
 xnoremap <c-j> :move '>+1<CR>gv=gv
 
 " Languague Client config
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['/Users/hung/.pyenv/shims/pyls'],
+"     \ }
+
+" if executable('pyls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'pyls',
+"         \ 'cmd': {server_info->['pyls']},
+"         \ 'whitelist': ['python'],
+"         \ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}}}}
+"         \ })
+" endif
+" let g:lsp_signs_enabled = 1         " enable signs
+" let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
 let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['/Users/hung/.pyenv/shims/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
 
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
