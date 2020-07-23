@@ -396,6 +396,10 @@ Plug 'enricobacis/vim-airline-clock'
   Plug 'dkarter/sniphelpers.vim'
 
   Plug 'ctrlpvim/ctrlp.vim'
+
+  " Using vim-plug
+  Plug 'elixir-editors/vim-elixir'
+  Plug 'jparise/vim-graphql'
 " }}}
 " {{{ lsp
   Plug 'autozimu/LanguageClient-neovim', {
