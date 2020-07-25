@@ -7,7 +7,7 @@
 " colorscheme  gruvbox
 
 set background=dark
-colorscheme PaperColor
+ colorscheme PaperColor
 set encoding=utf-8
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc

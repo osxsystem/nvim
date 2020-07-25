@@ -22,6 +22,25 @@ $ brew tap homebrew/cask-fonts
 $ brew cask install font-fantasquesansmono-nerd-font
 ```
 
+
+### 5. PIP install pyenv and neovim
+```
+
+pip install pynvim
+pip install neovim
+
+```
+
+### 6. checkhealth 
+```
+
+$   :checkhealth
+
+```
+
+### 7. PaperColor
+[paperColor](https://github.com/NLKNguyen/papercolor-theme)
+
 ### Todos
 
  - Add more feature: color theme, mapping, etc
