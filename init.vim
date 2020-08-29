@@ -40,8 +40,8 @@ set encoding=utf-8
    set mouse=a           " enable mouse (selection, resizing windows)
    set iskeyword+=-      " treat dash separated words as a word text object
 
-   set tabstop=4         " Softtabs or die! use 2 spaces for tabs.
-   set shiftwidth=4      " Number of spaces to use for each step of (auto)indent.
+   set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
+   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
    set expandtab         " insert tab with right amount of spacing
    set shiftround        " Round indent to multiple of 'shiftwidth'
    " set termguicolors     " enable true colors
@@ -59,7 +59,7 @@ set encoding=utf-8
      set visualbell
 
    " text appearance
-     set textwidth=80
+     set textwidth=120
      set nowrap                          " nowrap by default
      set list                            " show invisible characters
      set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
@@ -67,8 +67,11 @@ set encoding=utf-8
    " Numbers
      set number
      set numberwidth=1
-
-   " set where swap file and undo/backup files are saved
+    
+    " turn relative line numbers on
+    set relativenumber
+    
+    " set where swap file and undo/backup files are saved
      set backupdir=~/.vim/tmp,.
      set directory=~/.vim/tmp,.
 
