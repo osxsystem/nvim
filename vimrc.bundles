@@ -425,5 +425,4 @@ Plug 'enricobacis/vim-airline-clock'
 if filereadable(expand('~/.vimrc.bundles.local'))
   source ~/.vimrc.bundles.local
 endif
-  
 call plug#end()
