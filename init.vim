@@ -243,3 +243,9 @@ if filereadable(expand('~/.config/nvim/vimrc.bundles'))
   source ~/.config/nvim/vimrc.bundles
 endif
 " }}}
+
+" Load coc ------------------------------- {{{
+if filereadable(expand('~/.config/nvim/coc.vim'))
+  source ~/.config/nvim/coc.vim
+endif
+" }}}
